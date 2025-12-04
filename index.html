@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>理解虛擬貨幣｜加密貨幣是什麼？</title>
+<style>
+:root {
+  --bg: #0b1220;
+  --primary: #3d7cff;
+  --primary-soft: #142441;
+  --text: #e6ecf5;
+  --muted: #a9b4c6;
+  --card: #101827;
+  --border: #1f2a3d;
+  --warn-bg: #2a1c0d;
+  --warn-text: #f4a259;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at 20% 20%, #111827 0, transparent 28%), radial-gradient(circle at 80% 0%, #1b2a4d 0, transparent 35%), var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+a { color: var(--primary); text-decoration: none; }
+.wrapper { max-width: 1040px; margin: 0 auto; padding: 0 18px; }
+header {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: blur(12px);
+  background: rgba(11,18,32,0.9);
+  border-bottom: 1px solid var(--border);
+}
+nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; gap: 12px; }
+.brand { font-weight: 800; color: var(--primary); letter-spacing: 0.5px; }
+.nav-links { display: flex; gap: 14px; font-weight: 600; flex-wrap: wrap; }
+.nav-links a { padding: 8px 10px; border-radius: 8px; color: var(--muted); }
+.nav-links a:hover { background: var(--primary-soft); color: var(--text); }
+section { padding: 72px 0; }
+h1, h2, h3 { color: #f7f9ff; margin: 0 0 12px 0; }
+p { margin: 0 0 12px 0; color: var(--muted); }
+.hero {
+  padding: 96px 0 72px;
+  display: grid; gap: 18px;
+}
+.tag {
+  display: inline-block; padding: 8px 12px; border-radius: 999px;
+  background: var(--primary-soft); color: var(--primary); font-weight: 700; font-size: 14px;
+}
+.hero h1 { font-size: 36px; }
+.hero .desc { max-width: 760px; }
+.buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 6px 0 6px; }
+.btn {
+  padding: 12px 18px; border-radius: 10px; font-weight: 700; border: 1px solid transparent;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn-primary {
+  background: var(--primary); color: #fff; box-shadow: 0 10px 30px rgba(61,124,255,0.25);
+}
+.btn-secondary { background: #0e1626; color: var(--primary); border-color: var(--border); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,0.25); }
+.small-note { font-size: 13px; color: var(--muted); }
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+.grid {
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.list { padding-left: 18px; color: var(--muted); }
+.warn-box {
+  background: var(--warn-bg); color: var(--warn-text);
+  border: 1px solid #ffd9a3; border-radius: 12px; padding: 14px 16px; font-weight: 700;
+}
+ol { color: var(--muted); padding-left: 20px; }
+ol li { margin: 10px 0; }
+footer {
+  border-top: 1px solid var(--border); padding: 28px 0 40px; font-size: 14px; color: var(--muted);
+}
+@media (max-width: 640px) {
+  nav { flex-wrap: wrap; gap: 8px; }
+  .nav-links { display: none; }
+  .hero { padding: 80px 0 56px; }
+  .hero h1 { font-size: 28px; }
+  section { padding: 56px 0; }
+}
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrapper">
+    <nav>
+      <div class="brand">理解虛擬貨幣｜中立知識頁（非官方）</div>
+      <div class="nav-links">
+        <a href="#what">什麼是加密貨幣</a>
+        <a href="#diff">與一般貨幣差異</a>
+        <a href="#types">常見種類</a>
+        <a href="#concepts">核心觀念</a>
+        <a href="#use">可以做什麼</a>
+        <a href="exchanges.html" target="_blank" rel="noopener noreferrer">交易所推薦</a>
+        <a href="#risk">風險</a>
+        <a href="#basics">新手須知</a>
+        <a href="#disclaimer">免責</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrapper">
+    <section class="hero" id="top">
+      <span class="tag">中立介紹 · 幫你理解虛擬貨幣</span>
+      <h1>什麼是加密貨幣？</h1>
+      <p class="desc">
+        加密貨幣（Cryptocurrency）是一種完全數位化的貨幣形式，沒有紙鈔或硬幣，只存在於網路上。它依靠「區塊鏈」這種分散式帳本技術來記錄交易，不需要傳統銀行或政府當中間人，任何人都可以在網路上自由轉帳、收款或交易。
+      </p>
+      <p class="desc">
+        最早也是最有名的加密貨幣是比特幣（Bitcoin），之後又出現以太幣（Ether）、USDT 等「穩定幣」、以及各種不同用途或題材的代幣。簡單一句話：加密貨幣 = 用密碼學與區塊鏈技術運作的網路貨幣。
+      </p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#diff">先看差異</a>
+        <a class="btn btn-secondary" href="#concepts">認識錢包與鏈</a>
+      </div>
+      <div class="small-note">本頁僅為基礎知識整理，非任何投資建議。</div>
+    </section>
+
+    <section id="diff">
+      <h2>一、加密貨幣跟一般貨幣有什麼不同？</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>1. 發行者不同</h3>
+          <p>一般貨幣（台幣、美元）：由各國中央銀行發行，屬於「法定貨幣」。</p>
+          <p>加密貨幣：通常由程式碼與協議決定發行規則（有的固定總量、有的通膨），不直接由政府控制。</p>
+        </div>
+        <div class="card">
+          <h3>2. 帳本與記帳方式不同</h3>
+          <p>一般銀行帳戶：交易紀錄存在銀行的中央資料庫裡。</p>
+          <p>加密貨幣：交易紀錄公開寫在「區塊鏈」上，任何人都可以下載或查詢，透過節點共同驗證。</p>
+        </div>
+        <div class="card">
+          <h3>3. 轉帳方式不同</h3>
+          <p>傳統匯款：通常需要銀行或支付機構當中介，可能需要工作天、手續費較高。</p>
+          <p>加密貨幣轉帳：只要有錢包地址，全球都能直接轉帳，中間不一定需要銀行，但會收取區塊鏈手續費（Gas Fee）。</p>
+        </div>
+        <div class="card">
+          <h3>4. 可逆與否</h3>
+          <p>一般銀行轉錯帳，有機會透過銀行協助申訴或凍結。</p>
+          <p>加密貨幣交易一旦「上鏈確認」，在技術上幾乎無法撤回，轉錯地址就很難追回。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="types">
+      <h2>二、常見的加密貨幣種類</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>1. 比特幣（BTC）——「數位黃金」</h3>
+          <p>第一個出現的加密貨幣，總量固定，常被比喻成「數位黃金」或價值儲存工具。</p>
+          <p>主要用途是轉帳、持有與投機交易。</p>
+        </div>
+        <div class="card">
+          <h3>2. 以太幣（ETH）與智能合約平台</h3>
+          <p>以太坊是一個能執行「智能合約」的區塊鏈平台。</p>
+          <p>以太幣除了當作貨幣，也用來支付在以太坊上操作的手續費。很多 DeFi、NFT、鏈遊戲都建立在這類平台上。</p>
+        </div>
+        <div class="card">
+          <h3>3. 穩定幣（Stablecoins）</h3>
+          <p>如 USDT、USDC 等，通常宣稱「1 枚代幣 ≈ 1 美元」。</p>
+          <p>目的是讓使用者在加密貨幣世界中也能有相對穩定的計價單位，但仍有發行機構信用與監管風險。</p>
+        </div>
+        <div class="card">
+          <h3>4. 功能型代幣、平台幣</h3>
+          <p>交易所或專案會發行自己的平台幣，提供手續費折扣、投票、質押收益等功能。</p>
+          <p>價格會受平台發展、供需與市場情緒影響。</p>
+        </div>
+        <div class="card">
+          <h3>5. 題材幣、迷因幣（Meme Coins）</h3>
+          <p>因梗圖或社群熱度而紅起來的幣，波動通常非常誇張。</p>
+          <p>風險極高，可能短時間暴漲，也可能瞬間歸零。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="concepts">
+      <h2>三、加密貨幣背後的核心觀念：區塊鏈與錢包</h2>
+      <div class="card">
+        <h3>1. 區塊鏈是什麼？</h3>
+        <p>可以想像成一個由很多人共同維護的公開帳本。所有交易都會打包成一個個「區塊（Block）」，按時間順序接在一起形成「鏈（Chain）」。</p>
+        <p>每個區塊都透過密碼學方式彼此相連，要竄改過去的紀錄會非常困難。</p>
+        <h3>2. 去中心化的概念</h3>
+        <p>沒有單一公司或伺服器掌控全部資料，資料分散在全球許多節點之間，任何人都可以加入或離開。</p>
+        <h3>3. 錢包、公鑰與私鑰</h3>
+        <p>加密貨幣記錄在區塊鏈上；錢包只是管理你的「鑰匙」。</p>
+        <p>公鑰／地址：類似帳號，可以給別人轉帳。私鑰／助記詞：類似超級密碼，只能自己持有，一旦外流他人即可完全控制你的資產。</p>
+        <p class="warn-box">重點：不保管好私鑰／助記詞，就等於把錢包密碼交給別人。</p>
+      </div>
+    </section>
+
+    <section id="use">
+      <h2>四、加密貨幣可以拿來做什麼？</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>全球轉帳與支付</h3>
+          <p>可在跨國之間快速轉移價值，不受一般銀行時間限制（需付網路手續費）。</p>
+        </div>
+        <div class="card">
+          <h3>投資與投機</h3>
+          <p>現貨、合約、槓桿、衍生品等交易，屬高風險市場。</p>
+        </div>
+        <div class="card">
+          <h3>去中心化金融（DeFi）</h3>
+          <p>提供流動性、借貸、質押，獲取利息或代幣獎勵。</p>
+        </div>
+        <div class="card">
+          <h3>NFT、遊戲與 Web3 應用</h3>
+          <p>購買 NFT、鏈上遊戲道具、參與 DAO 等，常以加密貨幣作為支付或權益憑證。</p>
+        </div>
+      </div>
+      <p class="small-note">以上用途伴隨價格波動與合約風險，並非人人適合。</p>
+    </section>
+
+    <section id="pros">
+      <h2>五、加密貨幣的優點與吸引人的地方</h2>
+      <div class="card">
+        <ul class="list">
+          <li>全球性與高流動性：只要有網路，就能隨時隨地參與市場。</li>
+          <li>門檻相對低：不一定需要傳統金融機構的審核或最低資產要求。</li>
+          <li>去中心化與抗審查性：交易不易被單一機構凍結或否決（各國仍可透過法規管理）。</li>
+          <li>創新速度快：DeFi、NFT、GameFi 等新模型不斷出現，對喜歡新事物的人很有吸引力。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="risk">
+      <h2>六、同時也要認識的風險與問題</h2>
+      <div class="card">
+        <ul class="list">
+          <li>價格極端波動：可能短時間大漲，也可能瞬間腰斬或接近歸零。</li>
+          <li>監管與法律不確定性：各國態度差異大，某些服務可能隨時被限制或下架。</li>
+          <li>技術與平台風險：駭客攻擊、智慧合約漏洞、交易所倒閉或提幣暫停都曾發生。</li>
+          <li>詐騙與假專案多：假投資、假錢包、假空投、龐氏騙局層出不窮。</li>
+          <li>操作失誤難挽回：轉錯地址、弄丟私鑰或助記詞，通常很難找回資產，沒有客服可「重設」。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="basics">
+      <h2>七、新手應該先有的基本觀念</h2>
+      <div class="card">
+        <ul class="list">
+          <li>先理解，再碰錢：不要只因「很會賺」就衝進去，先搞懂基本概念、風險與常見詐騙手法。</li>
+          <li>只用能承受損失的金額：加密貨幣接近高風險投機資產，不適合作為生活必需金或緊急預備金。</li>
+          <li>分散風險，不 All-in：不要把全部資金放在同一交易所或鏈上，也不要只壓單一題材幣。</li>
+          <li>重視資安與權限：官方或可信來源下載錢包 App，不隨便點奇怪連結，不把私鑰／助記詞貼給任何人。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="disclaimer">
+      <h2>八、重要免責聲明</h2>
+      <div class="card">
+        <p>本頁面對加密貨幣的介紹，只是一份中立的基礎知識說明，目的是幫助讀者了解什麼是加密貨幣與它的大致風險與特性，不是、也不構成任何投資建議或保證。</p>
+        <p>加密貨幣與其相關產品（包含但不限於現貨、合約、槓桿、借貸、理財、NFT、DeFi 等）都屬於高風險資產，可能造成重大虧損，甚至全部損失。</p>
+        <p>在做出任何投資或使用決定之前，請務必自行研究（DYOR），並視需要尋求專業的財務或法律顧問意見，再決定是否參與。</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrapper">
+    <div>© <span id="year"></span> 理解虛擬貨幣 | 本頁僅為中立知識整理，非官方與非投資建議。</div>
+    <div class="small-note">請自行判斷並做好風險控管，勿將私鑰與助記詞交給任何人。</div>
+  </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+});
+</script>
+</body>
+</html>
